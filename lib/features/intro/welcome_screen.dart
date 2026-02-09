@@ -1,7 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:greenmart/core/constants/app_assets.dart';
 import 'package:greenmart/core/styles/text_styles.dart';
+import 'package:greenmart/core/widgets/main_button.dart';
+import 'package:greenmart/features/auth/page/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
   const WelcomeScreen({super.key});
@@ -18,42 +22,43 @@ class WelcomeScreen extends StatelessWidget {
             height: double.infinity,
             fit: BoxFit.cover,
           ),
+
           // content
           Positioned(
-            bottom: 50,
+            bottom: 60,
             left: 30,
             right: 30,
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                SvgPicture.asset(AppAssets.carrotSvg, width: 80, height: 80),
-                SizedBox(height: 5),
+                SizedBox(
+                  width: 80,
+                  height: 80,
+                  child: SvgPicture.asset(AppAssets.carrotSvg),
+                ),
+                SizedBox(height: 32),
                 Text(
                   'Welcome\nto our store',
                   textAlign: TextAlign.center,
                   style: TextStyles.headline.copyWith(color: Colors.white),
                 ),
-                SizedBox(height: 12),
+                SizedBox(height: 16),
                 Text(
                   'Ger your groceries in as fast as one hour',
                   textAlign: TextAlign.center,
                   style: TextStyles.body.copyWith(color: Colors.white),
                 ),
-                SizedBox(height: 30),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.green,
-                    foregroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 100,
-                      vertical: 20,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                  onPressed: () {},
-                  child: Text("Get Started"),
+                SizedBox(height: 40),
+                MainButton(
+                  text: 'Get Started',
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
