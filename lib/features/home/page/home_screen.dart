@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:greenmart/core/styles/app_colors.dart';
 
@@ -22,7 +24,40 @@ class HomeScreen extends StatelessWidget {
         ],
       ),
       body: SingleChildScrollView(
-        child: Column(children: [const SizedBox(height: 10)]),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const SizedBox(height: 10),
+            Padding(
+              padding: const EdgeInsets.only(top: 700),
+              child: NavigationBar(
+                destinations: [
+                  NavigationDestination(
+                    icon: const Icon(Icons.shopping_bag_outlined),
+                    label: 'Shop',
+                  ),
+                  NavigationDestination(
+                    icon: const Icon(Icons.travel_explore_rounded),
+                    label: 'Explore',
+                  ),
+                  NavigationDestination(
+                    icon: const Icon(Icons.shopping_cart_outlined),
+                    label: 'cart',
+                  ),
+                  NavigationDestination(
+                    icon: const Icon(Icons.favorite_border_outlined),
+                    label: 'Favorite',
+                  ),
+                  NavigationDestination(
+                    icon: const Icon(Icons.account_circle_outlined),
+                    label: 'Account',
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -7,4 +7,5 @@ class AppColors {
   static const Color accentColor = Color(0xffF0F1F2);
   static const Color backgroundColor = Colors.white;
   static const Color errorColor = Colors.red;
+  static const Color successColor = Color(0xFFF37A20);
 }

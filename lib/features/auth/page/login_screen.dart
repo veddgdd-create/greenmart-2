@@ -7,6 +7,7 @@ import 'package:greenmart/core/widgets/custom_password_field.dart';
 import 'package:greenmart/core/widgets/custom_svg_picture.dart';
 import 'package:greenmart/core/widgets/custom_text_field.dart';
 import 'package:greenmart/core/widgets/main_button.dart';
+import 'package:greenmart/features/auth/page/phone_number_auth.dart';
 import 'package:greenmart/features/auth/page/register_screen.dart';
 import 'package:greenmart/features/auth/page/reset_password.dart';
 
@@ -109,7 +110,12 @@ class _LoginScreenState extends State<LoginScreen> {
                     text: 'Login',
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        //  handle login logic
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PhoneNumberAuth(),
+                          ),
+                        );
                       }
                     },
                   ),

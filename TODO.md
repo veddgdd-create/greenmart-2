@@ -1,7 +1,2 @@
-1- [x] Change ResetPassword to StatefulWidget
-- [x] Add necessary imports (Material, app_colors, text_styles, custom_text_field, main_button, custom_svg_picture)
-- [x] Implement build method with Scaffold, background color, padding, form, column
-- [x] Add logo, title "Reset Password", description
-- [x] Add email TextFormField with validation
-- [x] Add MainButton "Reset Password" with onPressed to validate and show snackbar
-- [x] Add back navigation option
+- [x] Update the validator function in lib/features/auth/page/phone_number_auth.dart to include all specified conditions: not empty, length 11, starts with '01', third digit in ['0','1','2','5'], and all digits numeric.
+- [x] Test the app to ensure validation works correctly.
