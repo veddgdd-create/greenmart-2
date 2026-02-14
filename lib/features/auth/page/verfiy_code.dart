@@ -3,27 +3,42 @@ import 'package:greenmart/core/styles/app_colors.dart';
 import 'package:greenmart/core/widgets/main_button.dart';
 import 'package:greenmart/features/auth/page/reset_phone_number.dart';
 import 'package:greenmart/features/home/page/home_screen.dart';
+import 'package:pinput/pinput.dart';
 
 class VerfiyCode extends StatelessWidget {
   const VerfiyCode({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final defaultPinTheme = PinTheme(
+      width: 60,
+      height: 60,
+      textStyle: const TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: Colors.black,
+      ),
+      decoration: BoxDecoration(
+        color: AppColors.accentColor,
+        borderRadius: BorderRadius.circular(12),
+      ),
+    );
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: Icon(Icons.arrow_back_ios, color: Colors.black),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
         ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 15.0, top: 15.0),
+          const Padding(
+            padding: EdgeInsets.only(left: 15.0, top: 15.0),
             child: Text(
               'Enter verification code',
               style: TextStyle(
@@ -40,24 +55,14 @@ class VerfiyCode extends StatelessWidget {
               style: TextStyle(fontSize: 16, color: AppColors.greyColor),
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: List.generate(
-              6,
-              (index) => Container(
-                width: 60,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: AppColors.accentColor,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Center(
-                  child: Text(
-                    '',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
+          Center(
+            child: Pinput(
+              length: 6,
+              defaultPinTheme: defaultPinTheme,
+              onCompleted: (pin) {
+                // هنا تقدر تتحقق من الكود
+                print("Entered OTP: $pin");
+              },
             ),
           ),
           Row(
@@ -100,7 +105,7 @@ class VerfiyCode extends StatelessWidget {
               onPressed: () {
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                  MaterialPageRoute(builder: (context) => const HomeScreen()),
                 );
               },
             ),
